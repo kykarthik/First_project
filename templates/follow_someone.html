@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block follow %}
+  <div class="main text_adjust">Follow on Twitter</div>
+  <form action="{{ url_for('follow') }}" method="post">
+  	<div class="main">
+  		<label>Enter the name of the person to follow</label><br>
+  		<input type="text" name="follow_name"><br>
+  		<button type="submit" class="postbtn" name="follow">Follow</button>
+  		
+  	</div>
+  </form>
+
+{% endblock %}

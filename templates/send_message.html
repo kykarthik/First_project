@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block send_message %}
+    <div class="main text_adjust">Send direct message</div>
+  <form action="{{ url_for('message') }}" method="post">
+  	<div class="main">
+  		<label>Enter the name of the person to send message</label><br>
+  		<input type="text" name="reciever"><br><br>
+  		<label>Enter the message below</label><br>
+  		<textarea class='roundcorner' rows = "10" cols = "80" name = "msg"></textarea><br>
+  		<button type="submit" class="postbtn" name="follow">Send Message</button>
+  		
+  	</div>
+
+{% endblock %}

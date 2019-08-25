@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block get_tweet %}
+	<div class="main text_adjust">Get the tweets of selected users</div>
+	<form action="{{ url_for('get_tweets') }}" method="post">
+		<div class="main">
+			<label>Enter the name of the users seperated by comma</label><br>
+			<input type="text" name="get_tweets"><br>
+			<button type="submit" class="postbtn" name="fetch_tweet">Get tweets</button>
+		</div>
+    </form>
+    <div class="main">
+		{% for key, value in tweets.items() %}
+			<h2> Tweets of {{key}}</h2>
+			{% for i in value: %}
+				{% for date, message in i.items() %}
+					<i>{{date}}</i>
+					<p>{{message}}</p>
+					<hr>
+				{% endfor %}
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}

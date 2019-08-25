@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block block_person %}
+
+  <div class="main text_adjust">Block or Unblock on Twitter</div>
+  <form class="main" action="{{ url_for('block') }}" method="post">
+  		<input type="checkbox" name="chbox" value="unblock">Select the checkbox to unblock!<br><br>
+  		<label>Enter the name of the person to Block or unblock</label><br>
+  		<input type="text" name="block_name"><br>
+  		<button type="submit" class="postbtn" name="block">Block/Unblock</button>
+  </form>
+
+{% endblock %}

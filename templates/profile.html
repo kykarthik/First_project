@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block profile %}
+
+<div class="card">
+  <!-- <img src="E:\Karthik\Assignments\Twitter_bot\templates\685654.jpg" alt="Karthik" > -->
+  <!-- <img src="685654.jpg" alt="Karthik" width="42" height="42"> -->
+  <img src={{profile_image}} alt="Karthik" width="52" height="52">
+
+  <h1>{{ user_name }}</h1>
+  <h4> @{{ screen_name }} </h4>
+  <p class="title">Ameture Developer</p>
+  <div class="fa fa-handshake-o" style="font-size:20px;">&ensp;&ensp; Number of Friends : {{ friend_count }} </div><br><br>
+  <div class="fa fa-handshake-o" style="font-size:20px;">&ensp;&ensp; Number of Followers : {{ followers_count }} </div><br><br>
+  <div class="fa fa-telegram " style="font-size:20px;">&ensp;&ensp; Number of Status Posted : {{ status_posted }} </div><br><br>
+  <div class="fa fa-address-book" style="font-size:20px;"> &ensp;&ensp; Location : {{ location }}</div><br><br>
+</div>
+
+{% endblock %}

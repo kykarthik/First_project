@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link rel="icon" 
+      type="image/png" 
+      href="Twitter.png"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='welcome_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <title>
+    	Twitter
+    </title>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+    			<div class="{{ category }}"> {{ message }} </div> 
+  			{% endfor %}
+          {% endif %}
+        {% endwith %}
+    </head>
+   <body>
+    <div class="sidenav">
+      <a href="{{ url_for('handle_data') }}">Home</a>
+      <a href="{{ url_for('tweet_post') }}">Post Tweet</a>
+      <a href="{{ url_for('get_tweets') }}">Get Tweets</a>
+      <a href="{{ url_for('follow') }}">Follow on Twitter</a>
+      <a href="{{ url_for('block') }}">Block or Unblock</a>
+      <a href="{{ url_for('message') }}">Send Message</a>
+      <a href="{{ url_for('profile') }}">Profile</a>
+    </div>
+		{% block welcome %}{% endblock welcome %}
+		{% block post_tweet %}{% endblock post_tweet %}
+    {% block get_tweet %}{% endblock get_tweet %}
+    {% block block_person %}{% endblock block_person %}
+    {% block follow %}{% endblock follow %}
+    {% block send_message %}{% endblock send_message %}
+    {% block profile %} {% endblock profile %}
+    {% block tweet_display %} {% endblock tweet_display %}
+   </body>
+
+</html>

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block post_tweet %}
+	<form action="{{ url_for('tweet_post') }}" method="post">
+        <div class="main">
+            <h1 class="text_adjust">Post Tweet</h1>
+            <p style="font-size-adjust: 20px;">Enter the tweet below.</p>
+            <hr>
+            <label for="post_tweet"><b></label>
+            <textarea class='roundcorner' rows = "10" cols = "80" name = "description">
+         	</textarea><br><br>
+          <input type="checkbox" id="myCheck" name="mail_sender" value="send" onclick="EnableDisableTextBox(this)">Enable to send notification mails? <br><br>
+            <label id='from_label' disabled="disabled">Enter the From mail:</label>
+            <input id='from' type="text" name="from_mail" disabled="disabled"> <br>
+            <label id='password_label' disabled="disabled">Enter the password: </label>
+            <input id='pwd' type="password" name="password" disabled="disabled"><br>
+            <label id='to_label' disabled="disabled">Enter To mails seperated by comma:</label>
+           <input id='to' type="text" name="to_mail" disabled="disabled"> <br>
+           
+            <button type="submit" class="postbtn">Post</button>
+    	</div>
+    </form>
+
+<script>
+  function EnableDisableTextBox(check) {
+    var from = document.getElementById("from")
+    var pwd = document.getElementById("pwd")
+    var to = document.getElementById("to")
+    var from_label = document.getElementById("from_label")
+    var password_label = document.getElementById("password_label")
+    var to_label = document.getElementById("to_label")
+    from.disabled = check.checked ? false : true;
+    if (!from.disabled) {
+        from.focus();
+    }
+    pwd.disabled = check.checked ? false : true;
+    if (!pwd.disabled) {
+        pwd.focus();
+    }
+    to.disabled = check.checked ? false : true;
+    if (!to.disabled) {
+        to.focus();
+    }
+    from_label.disabled = check.checked ? false : true;
+    if (!from_label.disabled) {
+        from_label.focus();
+    }
+    password_label.disabled = check.checked ? false : true;
+    if (!password_label.disabled) {
+        password_label.focus();
+    }
+    to_label.disabled = check.checked ? false : true;
+    if (!to_label.disabled) {
+        to_label.focus();
+    }
+      }
+</script>
+
+{% endblock %}

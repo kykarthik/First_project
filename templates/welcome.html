@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block welcome %}
+
+<div class="main">
+  <p class="text_adjust"> Welcome to Tweet Bot </p>
+  <form action="{{ url_for('get_others_activity') }}" method="post">
+    <label>Check others twitter activity!!</label><br>
+    <input type="text" name="usernames"><br>
+    <button class="postbtn" type="submit" name="fetch">Enter</button>
+  </form>
+  <h1>Tweet Chart of {{ user_name }}</h1>
+  <!-- bar chart canvas element -->
+  <canvas id="myChart" width="600" height="400"></canvas> 
+  <p id="caption">Number of tweets posted per month this year.</p>
+</div>
+<script>
+      // bar chart data
+      var barData = {
+        labels : [
+          {% for item in labels %}
+           "{{ item }}",
+          {% endfor %}],
+        datasets : [{
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          data : [
+            {% for item in values %}
+               "{{ item }}",
+              {% endfor %}]
+          }
+        ]
+      }
+     // get bar chart canvas
+     var mychart = document.getElementById("myChart").getContext("2d");
+       steps = 10
+       max = 1000
+     // draw bar chart
+     new Chart(mychart).Bar(barData, {
+       scaleOverride: true,
+       scaleSteps: steps,
+       scaleStepWidth: Math.ceil(max / steps),
+       scaleStartValue: 0,
+       scaleShowVerticalLines: true,
+       scaleShowGridLines : true,
+       barShowStroke : true,
+       scaleShowLabels: true
+       }
+     );
+    </script>
+{%  endblock %}
